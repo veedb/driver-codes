@@ -3,26 +3,35 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-string solve (int n) {
-   // Your code goes here
-   // n is the given input
-   return "Special";
-}
+bool isMagic (int n )
+int sum = 0;
 
-// The main function reads the input in the required format.
-// Just complete the solve function above.
-int main() {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    int T;
-    cin >> T;
-    for(int t_i = 0; t_i < T; t_i++)
+/// so here we can continue th loop
+while (n > 0 || sum > 9)
     {
-        int n;
-        cin >> n;
-        string out_;
-        out_ = solve(n);
-        cout << out_;
-        cout << "\n";
+        if (n == 0)
+        {
+            n = sum;
+            sum = 0;
+        }
+        sum += n % 10;
+        n /= 10;
     }
+     
+    // Return true if sum becomes 1.
+    return (sum == 1);
 }
+  
+// Driver code
+int main()
+{
+    int n = 1234;
+    if (isMagic(n))
+        cout << "Magic Number";
+    else
+        cout << "Not a magic Number";
+    return 0;
+}
+   
+  
+   
